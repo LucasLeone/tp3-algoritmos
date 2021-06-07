@@ -45,9 +45,10 @@ while True:
         [3] Saber si se puede hacer un equipo de basquet masculino
         [4] Saber si se puede hacer un equipo de equitacion femenino
         [5] Listar todos los alumnos
-        [6] Listar todas las alumas de mayor a menor altura
+        [6] Listar todas las alumnas de mayor a menor altura
         [7] Listar todos los alumnos de menor a mayor peso
         [8] Solicitar los datos de un alumno
+        [9] Salir
     ''')
     option = int(input('Ingrese el codigo de la accion que quiere realizar: '))
 
@@ -120,6 +121,50 @@ while True:
             print(f'Codigo: {cod}, Peso: {peso}, Altura: {tall}, Sexo: {sex}')
             w += 1
     elif option == 6:
+        c = 0
+        vector_alumnas = []
+        for alum in altura:
+            if sexo[c] == 1:
+                vector_alumnas.append(alum)
+            c += 1
         
+        print('La lista de las alumnas ordenadas de mayor a menor altura es:')
+        print(sorted(vector_alumnas, reverse=True))
+    elif option == 7:
+        b = 0
+        vector_alumnos = []
+        for alum in pesos:
+            if sexo[b] == 0:
+                vector_alumnos.append(alum)
+            b += 1
 
-
+        print('La lista de los alumnos ordenados de menor a mayor peso es:')
+        print(sorted(vector_alumnos))
+    elif option == 8:
+        altura_solicitada = int(input('Ingrese la altura solicitada [150-210]: '))
+        peso_solicitado = int(input('Ingrese el peso solicitado [40-120]: '))
+        sexo_solicitado = int(input('Ingrese el sexo solicitado (0 = Hombre ; 1 = Mujer): '))
+        
+        a = 0
+        hay_alumno = False
+        for alum in altura:
+            if alum == altura_solicitada:
+                print('Cumple altura')
+                if pesos[a] == peso_solicitado:
+                    print('Cumple peso')
+                    if sexo[a] == sexo_solicitado:
+                        print('Cumple sexo')
+                        hay_alumno = True
+                        if sexo_solicitado == 0:
+                            print(f'Se encontro un alumno con {altura_solicitada}cm, {peso_solicitado}kg y que es hombre. Su codigo es: {a}')
+                        else:
+                            print(f'Se encontro un alumno con {altura_solicitada}cm, {peso_solicitado}kg y que es mujer. Su codigo es: {a}')
+            a += 1
+        
+        if hay_alumno == False:
+            print('No hay alumno que cumpla con todas las condiciones.')
+    elif option == 9:
+        print('Chau!')
+        break
+    else:
+        print('Opcion invalida!')
