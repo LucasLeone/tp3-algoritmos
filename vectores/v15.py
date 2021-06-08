@@ -4,4 +4,4 @@
     primer vector.
 '''
 
-# NO LO ENTENDI
+# NO LOGRE RESOLVERLO
